@@ -9,8 +9,7 @@ iex --sname fully.qualified.name
 mix new / run / test / deps / etc.
 mix.exs specifies build details
 
-
-<!-- iex Commands -->
+# iex Commands
 #iex:break — back to prompt
 c "filename.exs" — compile
 r Module — reload
@@ -38,10 +37,10 @@ Atom :foo :me@home :"with spaces"
 Tuple { 1, 2, :ok, "xy" } (like array)
 
 List [ 1, 2, 3 ] (like linked list)
- [ head | tail ]
- 'abc'
- ''' here doc '''
- (see Enum and List modules)
+    [ head | tail ]
+    'abc'
+    ''' here doc '''
+    (see Enum and List modules)
 
 Keyword List (can duplicate keys)
  [ a: "Foo", b: 123 ]
@@ -50,43 +49,42 @@ Map (no duplicate keys)
  %{ key => value, key => value }
 
 Binary << 1, 2 >> or "abc"
- """ here doc """
- "#{interpolated}"
- << name::prop-prop-prop … >>
- binary, bits, bitstring, bytes, float,
- integer, utf8, utf16, utf32, size(n),
- signed/unsigned, big/little native
+    """ here doc """
+    "#{interpolated}"
+    << name::prop-prop-prop … >>
+    binary, bits, bitstring, bytes, float,
+    integer, utf8, utf16, utf32, size(n),
+    signed/unsigned, big/little native
 
 Truth true, false, nil
 
 Range a..b
 
-
 # Anonymous Functions 
 fn parms [guard] -> body
  parms [guard] -> body
 end
+
 call with func.()
+
 Shortcut: &(...)
  &1,&2 as parameters
-
-
-
 
 # Named Functions 
 (Only in modules, records, etc)
 def name(parms) [guard] do
  expression
 end
-def name(parms) [guard], do: expr
-Default params: parameter \\ default
-defp for private functions
-Multiple heads with different params and/
-or guards allowed.
-Capture a function with:
-&mod_name.func_name/arity
- (Can omit mod_name)
 
+def name(parms) [guard], do: expr
+  Default params: parameter \\ default
+
+defp for private functions
+  Multiple heads with different params and/
+  or guards allowed.
+  Capture a function with:
+      &mod_name.func_name/arity
+      (Can omit mod_name)
 
 # Modules 
 defmodule mod_name do
@@ -94,21 +92,23 @@ defmodule mod_name do
  @doc "description"
  function/macro
 end
+
 require Module (used for macros)
+
 use Module
-calls Module.__using__
+      calls Module.__using__
+
 import Module [,only:|except:]
 alias mod_path [, as: Name]
 alias mod_path.{ Name, Name, Name... }
 @attribute_name value
 Call Erlang using:
-:module.function_name
+      :module.function_name
 
-
-
-#  Guard Clause 
+# Guard Clause 
 Part of pattern match
 when expr
+
 where operators in expr are limited to:
 ==, !=, ===, !==, >, <, <=, >=,
 or, and, not, !, +, -, *, /, in,
@@ -124,9 +124,6 @@ round(num), self(), tl(list), trunc(num),
 tuple_size(tuple)
 <> and ++ (left side literal)
 
-
-
-
 # Comprehensions 
 for generator/filter [, into: value ], do: expr
 Generators are:
@@ -134,13 +131,49 @@ pattern <- list
 With binaries as:
  for << ch <- "hello" >>, do: expr
 
-
 #  do: vs do/end 
-something do something, do: expr
+something do 
  expr
 end
+
+something, do: expr
+
+
 else, rescue, try, ensure also generate
 keyword args, and are then compiled
+
+# Control Flow
+if expr do 
+  exp 
+else
+  exp 
+end
+
+unless expr do
+  exp
+else 
+  exp
+end
+
+
+case expr do 
+   match [guard] -> exp 
+   match [guard] -> exp 
+   … 
+end
+
+cond do
+  bool -> exp
+  bool -> exp
+end
+
+with match <- exp,
+ match <- exp,
+ …,
+ do: exp
+
+executes all exp until a match fails (and is
+returned), or the do: is run.
 
 # Maps 
 %{ key => value, key => value }
@@ -150,6 +183,25 @@ newmap = %{ oldmap | key => newval }
 or
 newmap = Map.put(oldmap, key, newval)
 Map.put_new/3 to add a key
+
+
+# Metaprogramming
+defmacro macroname(parms) do
+  parms are quoted args
+  return quoted code which
+  is inserted at call site
+end
+
+quote do: … returns internal rep.
+quote bind_quoted: [name: name]
+do: ...
+
+unquote do: … only inside quote, injects
+code fragment without evaluation
+
+# Predefined Names
+__MODULE__ __FILE__ __DIR__ __ENV__
+__CALLER__ (macros only)
 
 
 # Protocols 
