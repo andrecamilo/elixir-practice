@@ -1,5 +1,5 @@
 # mudulos sempre tem que ter a primeira letra maiuscula
-defmodule Structures do
+defmodule Str do
   def check(val) do
     new_val = 20
 

@@ -1,5 +1,5 @@
 # mudulos sempre tem que ter a primeira letra maiuscula
-defmodule Structures do
+defmodule Str do
   def check do
     cond do
       1 + 1 == 2 -> "primeiro retorno"
