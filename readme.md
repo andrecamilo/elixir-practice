@@ -1,4 +1,4 @@
-<!-- Command line -->
+# Command line 
 elixir [options] file.ex/file.exs
 iex
 iex -S script (e.g., iex -S mix)
@@ -18,8 +18,7 @@ h function_name — help
 i var — display type info
 v [n] — session history
 
-
-    Operators
+# Operators
 === !== and or not #(strict)
 == != && || ! #(relaxed)
 >, >=, <, <=
@@ -32,7 +31,7 @@ a in enum #(membership)
 ^term #(no reassign)
 
 
-<!-- Types -->
+# Types
 Integer 1234 0xcafe 0177 0b100 10_000
 Float 1.0 3.1415 6.02e23
 Atom :foo :me@home :"with spaces"
@@ -63,7 +62,7 @@ Truth true, false, nil
 Range a..b
 
 
-<!-- Anonymous Functions -->
+# Anonymous Functions 
 fn parms [guard] -> body
  parms [guard] -> body
 end
@@ -74,7 +73,7 @@ Shortcut: &(...)
 
 
 
-<!-- Named Functions -->
+# Named Functions 
 (Only in modules, records, etc)
 def name(parms) [guard] do
  expression
@@ -89,7 +88,7 @@ Capture a function with:
  (Can omit mod_name)
 
 
-<!-- Modules -->
+# Modules 
 defmodule mod_name do
  @moduledoc "description"
  @doc "description"
@@ -107,7 +106,7 @@ Call Erlang using:
 
 
 
-<!-- Guard Clause -->
+#  Guard Clause 
 Part of pattern match
 when expr
 where operators in expr are limited to:
@@ -128,7 +127,7 @@ tuple_size(tuple)
 
 
 
-<!-- Comprehensions -->
+# Comprehensions 
 for generator/filter [, into: value ], do: expr
 Generators are:
 pattern <- list
@@ -136,14 +135,14 @@ With binaries as:
  for << ch <- "hello" >>, do: expr
 
 
-<!-- do: vs do/end -->
+#  do: vs do/end 
 something do something, do: expr
  expr
 end
 else, rescue, try, ensure also generate
 keyword args, and are then compiled
 
-<!-- Maps -->
+# Maps 
 %{ key => value, key => value }
 value = map[key] (can return nil)
 value = map.key (if key is atom; can fail)
@@ -153,7 +152,7 @@ newmap = Map.put(oldmap, key, newval)
 Map.put_new/3 to add a key
 
 
-<!-- Protocols -->
+# Protocols 
 defprotocol module.name do
  @moduledoc description
  @only [list of types] (optional)
@@ -169,9 +168,7 @@ Allowed types:
 Any Atom BitString Function List
 Number PID Port Record Reference 
 
-
-
-Regexp
+# Regexp
 ~r{pattern}opts
 f match beg of ml string
 g use named groups
@@ -182,7 +179,7 @@ s . matches newline
 u Unicode patterns
 x ignore whitespace and comments
 
-<!-- Processes -->
+# Processes 
 pid = spawn(anon_function)
 pid = spawn(mod, func, args)
 (also spawn_link)
@@ -194,21 +191,19 @@ receive do
 end
 
 
-<!-- Pipelines -->
+# Pipelines 
 expr |> f1 |> f2(a,b) |> f3(c)
 (same as)
 f3(f2(f1(expr), a, b), c)
 
-
-
-<!-- Structs -->
+# Structs 
 defmodule Name do
  defstruct field: default, …
 end
 %Name{field: value, field: value, …}
 new_struct = %{ var | field: new_value }
 
-<!-- Sigils -->
+# Sigils
 ~type{ content }
 Delimiter: { }, [ ], ( ), / /, | |, " ", or ' '
 ~S string (no interpolation)
