@@ -1,4 +1,4 @@
-# 30 Days of Elixir
+# 30 samples with Elixir
 
 A walk through the [Elixir](http://elixir-lang.org/) language, one exercise per day for 30 days.
 
